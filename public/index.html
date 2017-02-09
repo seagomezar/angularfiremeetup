@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="asaoApp">
   <head>
     <meta charset="utf-8">
     <title>Bienvenidos a mi Asao App</title>
+    
   </head>
-  <body>
+  <body ng-controller="PrincipalCtrl">
       <h1>Bienvenidos a mi Asao App</h1>
-
       <!-- Angular -->
       <script src="bower_components/angular/angular.min.js"></script>
 
@@ -27,5 +27,6 @@
         };
         firebase.initializeApp(config);
       </script>
+      <script src="principal.js"></script>
   </body>
 </html>
