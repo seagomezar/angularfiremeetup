@@ -27,10 +27,16 @@
     <!-- Fin listado de Asados -->
 
     <!-- Inicio detalles del asado-->
-    <md-tabs ng-show="ctrl.isDetailsDisplayed" md-border-top md-align-tabs="bottom">
+    <md-tabs ng-show="ctrl.isDetailsDisplayed" md-border-top md-align-tabs="bottom" style="min-height: 564px;">
       <md-tab label="Invitados">
-        <md-content class="md-padding"  flex layout="row">
-          <p>Aca van a aparecer los invitados</p>
+        <md-content class="md-padding"  flex layout="column">
+          <md-list>
+            <md-list-item ng-repeat="p in ctrl.asadoActual.participantes" class="secondary-button-padding">
+              <p> {{ p.nombre }} </p>
+              <md-button class="md-warn" ng-click="ctrl.borrarParticipante(asado)">Borrar</md-button>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
         </md-content>
       </md-tab>
       <md-tab label="Materiales">
@@ -40,7 +46,7 @@
       </md-tab>
     </md-tabs>
 
-    <md-button ng-show="ctrl.isDetailsDisplayed" class="md-fab md-mini md-fab-bottom-right" aria-label="Eat cake">
+    <md-button ng-show="ctrl.isDetailsDisplayed" ng-click="ctrl.anadirParticipante(asado)" class="md-fab md-mini md-fab-bottom-right" aria-label="Eat cake">
         <md-icon>add</md-icon>
     </md-button>
     <!-- Fin detalles del asado -->
