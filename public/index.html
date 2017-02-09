@@ -3,10 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Bienvenidos a mi Asao App</title>
-    
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   </head>
-  <body ng-controller="PrincipalCtrl">
-      <h1>Bienvenidos a mi Asao App</h1>
+  <body>
+      <div ng-controller="PrincipalCtrl">
+        <md-button class="md-raised md-primary">Nuevo Asado</md-button>
+        <md-button class="md-raised md-warn">Ver Asados</md-button>        
+      </div>
       <!-- Angular -->
       <script src="bower_components/angular/angular.min.js"></script>
 
@@ -15,6 +19,11 @@
 
       <!-- AngularFire -->
       <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+
+      <!-- angular-material-->
+      <script src="bower_components/angular-aria/angular-aria.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-material/angular-material.js"></script>
 
       <script>
         // Initialize Firebase
