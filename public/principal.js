@@ -50,6 +50,9 @@
                 vm.asadoActual = asado;
                 asado.haSidoVisto = true;
                 vm.asadosArray.$save(asado);
+
+                var refParticipantes = ref.child(vm.asadoActual.$id).child('participantes');
+                vm.participantes = $firebaseArray(refParticipantes);
             };
 
             vm.anadirParticipante = function(){
@@ -62,8 +65,8 @@
 
                 $mdDialog.show(confirm).then(function (nombre) {
 
-                    var refParticipantes = ref.child(vm.asadoActual.$id);
-                    var asado = $firebaseObject(refParticipantes);
+                    var refAsado = ref.child(vm.asadoActual.$id);
+                    var asado = $firebaseObject(refAsado);
                     asado.$loaded().then(() => {
                         if (!asado.participantes) {
                             asado.participantes = [
@@ -83,6 +86,10 @@
                 }, function () {
                     console.log('se arrepintió');
                 });
+            }
+
+            vm.borrarParticipante = function() {
+
             }
         }]);
 
