@@ -53,6 +53,9 @@
 
                 var refParticipantes = ref.child(vm.asadoActual.$id).child('participantes');
                 vm.participantes = $firebaseArray(refParticipantes);
+
+                var refMateriales = ref.child(vm.asadoActual.$id).child('materiales');
+                vm.materiales = $firebaseArray(refMateriales);
             };
 
             vm.anadirParticipante = function(){
@@ -88,8 +91,8 @@
                 });
             }
 
-            vm.borrarParticipante = function() {
-
+            vm.anadirMaterial = function() {
+                console.log('Voy a anadir un material');
             }
         }]);
 
