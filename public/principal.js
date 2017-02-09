@@ -39,8 +39,15 @@
 
             vm.verAsados = function() {
                 vm.isAsadosDisplayed = true;
+                vm.isDetailsDisplayed = false;
                 vm.asadosArray = $firebaseArray(ref);
                 vm.asadosObject = $firebaseObject(ref);
+            };
+
+            vm.verDetalles = function(asado) {
+                vm.isDetailsDisplayed = true;
+                vm.isAsadosDisplayed = false;
+                console.log(asado);
             };
         }]);
 
