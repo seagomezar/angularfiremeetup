@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html ng-app="asaoApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Bienvenidos a mi Asao App</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-  </head>
-  <body>
-      <div ng-controller="PrincipalCtrl as ctrl">
-        <md-button class="md-raised md-primary" ng-click="ctrl.nuevoAsado()">Nuevo Asado</md-button>
-        <md-button class="md-raised md-warn">Ver Asados</md-button>        
-      </div>
-      <!-- Angular -->
-      <script src="bower_components/angular/angular.min.js"></script>
 
-      <!-- Firebase -->
-      <script src="bower_components/firebase/firebase.js"></script>
+<head>
+  <meta charset="utf-8">
+  <title>Bienvenidos a mi Asao App</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+</head>
 
-      <!-- AngularFire -->
-      <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+<body>
+  <div ng-controller="PrincipalCtrl as ctrl">
+    <md-button class="md-raised md-primary" ng-click="ctrl.nuevoAsado()">Nuevo Asado</md-button>
+    <md-button class="md-raised md-warn" ng-show="!ctrl.isAsadosDisplayed" ng-click="ctrl.verAsados()">Ver Asados</md-button>
+    <md-button class="md-raised md-warn" ng-show="ctrl.isAsadosDisplayed" ng-click="ctrl.isAsadosDisplayed = false">Ocultar Asados</md-button>
+    
+    <!-- Listado de Asados -->
+    <md-list ng-if="ctrl.isAsadosDisplayed">
+      <md-list-item ng-repeat="asado in ctrl.asadosArray" class="secondary-button-padding" ng-click="">
+        <p> {{ asado.nombre }} </p>
+        <md-button class="md-secondary" ng-click="">Detalles >></md-button>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
+    <!-- Fin listado de Asados -->
 
-      <!-- angular-material-->
-      <script src="bower_components/angular-aria/angular-aria.js"></script>
-      <script src="bower_components/angular-animate/angular-animate.js"></script>
-      <script src="bower_components/angular-material/angular-material.js"></script>
+  </div>
+  
+  <!-- Angular -->
+  <script src="bower_components/angular/angular.min.js"></script>
 
-      <script>
+  <!-- Firebase -->
+  <script src="bower_components/firebase/firebase.js"></script>
+
+  <!-- AngularFire -->
+  <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+
+  <!-- angular-material-->
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+
+  <script>
         // Initialize Firebase
         const config = {
           apiKey: "AIzaSyDEvg-WrtKuduO2eOBXXXHlWzjSdoffl1U",
@@ -36,6 +51,7 @@
         };
         firebase.initializeApp(config);
       </script>
-      <script src="principal.js"></script>
-  </body>
+  <script src="principal.js"></script>
+</body>
+
 </html>

@@ -36,6 +36,11 @@
 
                 
             };
+
+            vm.verAsados = function() {
+                vm.isAsadosDisplayed = true;
+                vm.asadosArray = $firebaseArray(ref);
+            };
         }]);
 
 })();
