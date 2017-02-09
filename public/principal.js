@@ -54,19 +54,35 @@
 
             vm.anadirParticipante = function(){
                 var confirm = $mdDialog.prompt()
-                        .title('¿Cuál es el nombre del participante?')
-                        .placeholder('Asao Peruano!')
-                        .targetEvent()
-                        .ok('Seguir')
-                        .cancel('Me arrepentí');
+                    .title('¿Cuál es el nombre del participante?')
+                    .placeholder('Asao Peruano!')
+                    .targetEvent()
+                    .ok('Seguir')
+                    .cancel('Me arrepentí');
 
-                    $mdDialog.show(confirm).then(function (nombre) {
-                        vm.asadoActual.participantes.push({
-                            nombre: nombre
-                        });
-                    }, function () {
-                        console.log('se arrepintió');
+                $mdDialog.show(confirm).then(function (nombre) {
+
+                    var refParticipantes = ref.child(vm.asadoActual.$id);
+                    var asado = $firebaseObject(refParticipantes);
+                    asado.$loaded().then(() => {
+                        if (!asado.participantes) {
+                            asado.participantes = [
+                                {
+                                    nombre: nombre
+                                }
+                            ];
+                        } else {
+                            asado.participantes.push({
+                                nombre: nombre
+                            });
+                        }
+                        asado.$save();
                     });
+
+
+                }, function () {
+                    console.log('se arrepintió');
+                });
             }
         }]);
 
