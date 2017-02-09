@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   </head>
   <body>
-      <div ng-controller="PrincipalCtrl">
-        <md-button class="md-raised md-primary">Nuevo Asado</md-button>
+      <div ng-controller="PrincipalCtrl as ctrl">
+        <md-button class="md-raised md-primary" ng-click="ctrl.nuevoAsado()">Nuevo Asado</md-button>
         <md-button class="md-raised md-warn">Ver Asados</md-button>        
       </div>
       <!-- Angular -->
