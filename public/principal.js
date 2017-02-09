@@ -45,10 +45,29 @@
             };
 
             vm.verDetalles = function(asado) {
-                vm.isDetailsDisplayed = true;
                 vm.isAsadosDisplayed = false;
-                console.log(asado);
+                vm.isDetailsDisplayed = true;
+                vm.asadoActual = asado;
+                asado.haSidoVisto = true;
+                vm.asadosArray.$save(asado);
             };
+
+            vm.anadirParticipante = function(){
+                var confirm = $mdDialog.prompt()
+                        .title('¿Cuál es el nombre del participante?')
+                        .placeholder('Asao Peruano!')
+                        .targetEvent()
+                        .ok('Seguir')
+                        .cancel('Me arrepentí');
+
+                    $mdDialog.show(confirm).then(function (nombre) {
+                        vm.asadoActual.participantes.push({
+                            nombre: nombre
+                        });
+                    }, function () {
+                        console.log('se arrepintió');
+                    });
+            }
         }]);
 
 })();

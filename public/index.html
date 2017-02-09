@@ -6,6 +6,8 @@
   <title>Bienvenidos a mi Asao App</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 
 <body>
@@ -27,7 +29,7 @@
     <!-- Inicio detalles del asado-->
     <md-tabs ng-show="ctrl.isDetailsDisplayed" md-border-top md-align-tabs="bottom">
       <md-tab label="Invitados">
-        <md-content class="md-padding">
+        <md-content class="md-padding"  flex layout="row">
           <p>Aca van a aparecer los invitados</p>
         </md-content>
       </md-tab>
@@ -37,6 +39,10 @@
         </md-content>
       </md-tab>
     </md-tabs>
+
+    <md-button ng-show="ctrl.isDetailsDisplayed" class="md-fab md-mini md-fab-bottom-right" aria-label="Eat cake">
+        <md-icon>add</md-icon>
+    </md-button>
     <!-- Fin detalles del asado -->
 
   </div>
