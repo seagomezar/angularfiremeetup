@@ -61,7 +61,7 @@
             vm.anadirParticipante = function(){
                 var confirm = $mdDialog.prompt()
                     .title('¿Cuál es el nombre del participante?')
-                    .placeholder('Asao Peruano!')
+                    .placeholder('La tia clara')
                     .targetEvent()
                     .ok('Seguir')
                     .cancel('Me arrepentí');
@@ -92,7 +92,22 @@
             }
 
             vm.anadirMaterial = function() {
-                console.log('Voy a anadir un material');
+                var confirm = $mdDialog.prompt()
+                    .title('¿Cuál es el nombre del material?')
+                    .placeholder('Cerveza!!!!')
+                    .targetEvent()
+                    .ok('Guardar')
+                    .cancel('Olvidalo MDF!');
+
+                $mdDialog.show(confirm).then(function (nombre) {
+
+                    vm.materiales.$add({
+                                nombre: nombre
+                            });
+
+                }, function () {
+                    console.log('se arrepintió');
+                });
             }
         }]);
 
