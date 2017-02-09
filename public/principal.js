@@ -15,14 +15,26 @@
                         .ok('Seguir')
                         .cancel('Me arrepentí');
 
-                    $mdDialog.show(confirm).then(function (result) {
-                        console.log('el asado se va a llamar', result);
+                    $mdDialog.show(confirm).then(function (nombre) {
+                        crearAsado(nombre);
                     }, function () {
                         console.log('se arrepintió');
                     });
 
-                vm.asadosArray = $firebaseArray(ref);
+                function crearAsado(nombre){
+                    if (nombre && nombre.length) {
+                        vm.asadosArray = $firebaseArray(ref);
+                        vm.asadosArray.$add({
+                            nombre: nombre
+                        });
 
+                        // vm.asadosArray = $firebaseObject(ref);
+                        // vm.asadosArray.edad = nombre;
+                        // vm.asadosArray.$save();
+                    } 
+                }
+
+                
             };
         }]);
 
